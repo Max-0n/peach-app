@@ -1,0 +1,182 @@
+@import 'tailwindcss';
+
+:root {
+  --ivory: #f3eadf;
+  --charcoal: #3b322c;
+  --surface: #faf4eb;
+  --muted: #6a5e54;
+  --line: #e6d9c8;
+  --sage: #6f6256;
+  --sage-soft: #eee4d6;
+  --plum: #8a5c52;
+  --tg-safe-area-inset-top: 0px;
+  --tg-safe-area-inset-right: 0px;
+  --tg-safe-area-inset-bottom: 0px;
+  --tg-safe-area-inset-left: 0px;
+  --app-safe-top: max(
+    env(safe-area-inset-top, 0px),
+    var(--tg-safe-area-inset-top)
+  );
+  --app-safe-bottom: max(
+    env(safe-area-inset-bottom, 0px),
+    var(--tg-safe-area-inset-bottom)
+  );
+  color-scheme: light;
+  color: var(--charcoal);
+  background: var(--ivory);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@theme inline {
+  --color-background: var(--ivory);
+  --color-foreground: var(--charcoal);
+  --color-ivory: var(--ivory);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-sage: var(--sage);
+  --color-sage-soft: var(--sage-soft);
+  --color-plum: var(--plum);
+  --font-editorial: Iowan Old Style, Baskerville, Georgia, serif;
+  --shadow-soft: 0 12px 36px rgb(41 39 37 / 12%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ivory: #241e1a;
+    --charcoal: #f3eadf;
+    --surface: #2e2823;
+    --muted: #cbb9aa;
+    --line: #433c35;
+    --sage: #c4b19e;
+    --sage-soft: #3a322b;
+    --plum: #d2b0a4;
+    color-scheme: dark;
+  }
+}
+
+html[data-theme='light'] {
+  --ivory: #f3eadf;
+  --charcoal: #3b322c;
+  --surface: #faf4eb;
+  --muted: #6a5e54;
+  --line: #e6d9c8;
+  --sage: #6f6256;
+  --sage-soft: #eee4d6;
+  --plum: #8a5c52;
+  color-scheme: light;
+}
+
+html[data-theme='dark'] {
+  --ivory: #241e1a;
+  --charcoal: #f3eadf;
+  --surface: #2e2823;
+  --muted: #cbb9aa;
+  --line: #433c35;
+  --sage: #c4b19e;
+  --sage-soft: #3a322b;
+  --plum: #d2b0a4;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  touch-action: manipulation;
+}
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: clip;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--ivory);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  font-size: 16px;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--plum);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: max(0.75rem, var(--app-safe-top));
+  left: 0.75rem;
+  z-index: 50;
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  color: var(--ivory);
+  background: var(--charcoal);
+  font-weight: 700;
+  transform: translateY(calc(-100% - 2rem));
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  animation: reveal 320ms ease-out both;
+}
+
+.wheel-picker {
+  scrollbar-width: none;
+}
+
+.wheel-picker::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
