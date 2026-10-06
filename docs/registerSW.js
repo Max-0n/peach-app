@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/peach-app/sw.js', { scope: '/peach-app/' })})}

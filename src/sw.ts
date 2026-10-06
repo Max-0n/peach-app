@@ -17,7 +17,10 @@ void self.skipWaiting()
 clientsClaim()
 
 registerRoute(
-  new NavigationRoute(createHandlerBoundToURL('/index.html'), {
-    denylist: [/^\/api\//],
-  }),
+  new NavigationRoute(
+    createHandlerBoundToURL(`${import.meta.env.BASE_URL}index.html`),
+    {
+      denylist: [/^\/api\//],
+    },
+  ),
 )
